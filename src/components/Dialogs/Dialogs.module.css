@@ -1,0 +1,45 @@
+
+.dialogs {
+    padding: 30px 20px;
+    height: 100%;
+    background-color: #e7d68a;
+    display: flex;
+}
+
+.dialogs__items .active {
+    color: #7d6d1b;
+}
+
+.dialog {
+    color: red;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.dialogs__items{
+    flex: 0 1 50%;
+
+}
+
+.messages{
+    flex: 0 1 50%;
+    color: red;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+
+.message{
+    color: #ffffff;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: 700;
+    font-style: italic;
+    margin-bottom: 10px;
+}
