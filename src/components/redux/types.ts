@@ -3,6 +3,8 @@ export type PostType = {
     title: string
     like: number
 }
+export type newPostTextType = string
+
 
 export type DialogsType={
     id: number
@@ -16,6 +18,7 @@ export type MessagesType={
 
 export type ProfilePageType = {
     posts: Array<PostType>
+    newPostText: newPostTextType
 }
 
 export type MessagePageType = {
@@ -23,8 +26,11 @@ export type MessagePageType = {
     dialogs: Array<DialogsType>
 }
 
+export type sideBarType= {}
+
 export type StateType ={
     profilePage: ProfilePageType
-    mesasgesPage: MessagePageType
+    dialogsPage: MessagePageType
+    sideBar : sideBarType
 
 }

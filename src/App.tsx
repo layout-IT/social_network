@@ -6,11 +6,13 @@ import Profile from "./components/Profile/Profile";
 import {Dialogs} from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom";
 import {StateType} from "./components/redux/types";
-import state, {addPost} from './components/redux/state'
+import {ActionsTypes} from "./components/redux/state";
+
 
 type AppPropsType = {
     state: StateType
-    addPost: (postMessage:string)=>void
+    dispatch: (action: ActionsTypes) => void
+
 }
 
 function App(props: AppPropsType) {
@@ -22,10 +24,11 @@ function App(props: AppPropsType) {
 
                 <div className='app-wrapper-contant'>
                     <Route path='/dialogs' render={() =>
-                        <Dialogs messages={props.state.mesasgesPage.messages}
-                                 dialogs={props.state.mesasgesPage.dialogs}/>}/>
+                        <Dialogs messages={props.state.dialogsPage.messages}
+                                 dialogs={props.state.dialogsPage.dialogs}/>}/>
                     <Route path='/profile' render={() =>
-                        <Profile posts={props.state.profilePage.posts} addPost={props.addPost}/>}/>
+                        <Profile profilePage={props.state.profilePage}
+                                 dispatch={props.dispatch}/>}/>
                 </div>
             </div>
         </div>
