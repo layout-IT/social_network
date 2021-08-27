@@ -6,31 +6,35 @@ export type PostType = {
 export type newPostTextType = string
 
 
-export type DialogsType={
+export type DialogsType = {
     id: number
     name: string
+
 }
 
-export type MessagesType={
+export type MessagesType = {
     id: number
     title: string
 }
+
 
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: newPostTextType
 }
 
-export type MessagePageType = {
+export type DialogsPageType = {
     messages: Array<MessagesType>
     dialogs: Array<DialogsType>
+    newMessageBody: string
+
 }
 
-export type sideBarType= {}
+export type sideBarType = {}
 
-export type StateType ={
+export type StateType = {
     profilePage: ProfilePageType
-    dialogsPage: MessagePageType
-    sideBar : sideBarType
+    dialogsPage: DialogsPageType
+    sideBar: sideBarType
 
 }
