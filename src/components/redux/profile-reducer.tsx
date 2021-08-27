@@ -1,9 +1,22 @@
-import {PostType, ProfilePageType} from "./types";
+import {newPostTextType} from "./dialogs-reducer";
+
 
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type UpdateNewPostActionTYpe = ReturnType<typeof updateNewPostActionCreator>
 
-let initialState ={
+export type ProfilePageType = {
+    posts: Array<PostType>
+    newPostText: newPostTextType
+}
+
+export type PostType = {
+    id: number
+    title: string
+    like: number
+}
+
+
+let initialState = {
     posts:
         [
             {id: 1, title: 'hi, how are you', like: 12},
@@ -12,23 +25,30 @@ let initialState ={
     newPostText: 'it.comm'
 }
 
-const profileReducer = (state: ProfilePageType = initialState , action: AddPostActionType | UpdateNewPostActionTYpe) => {
+const profileReducer = (state: ProfilePageType = initialState, action: AddPostActionType | UpdateNewPostActionTYpe): ProfilePageType => {
     switch (action.type) {
-        case 'ADD-POST':
-            let newPost: PostType = {
+        case 'ADD-POST': {
+            let newPost:
+                PostType = {
                 id: new Date().getTime(),
                 title: action.newPostText,
                 like: new Date().getTime(),
             };
-            state.posts.push(newPost);
-            state.newPostText = '';
-            return state;
+            let stateCopy = {...state};
+            stateCopy.posts = [...state.posts];
+            stateCopy.posts.push(newPost)
+            stateCopy.newPostText = '';
+            return stateCopy;
+        }
 
         case 'UPDATE-NEW-TEXT' :
-            state.newPostText = action.newText;
-            return state;
+            let stateCopy = {...state}
+            stateCopy.newPostText = action.newText;
+            return stateCopy;
         default:
             return state;
+
+
     }
 }
 

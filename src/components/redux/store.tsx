@@ -1,8 +1,17 @@
-import {StateType} from "./types";
-import {rerenderIntireTree} from "../../index";
-import profileReducer, {AddPostActionType, UpdateNewPostActionTYpe} from "./profile-reducer";
-import dialogsReducer, {UpdateNewMassageBodyCreatorType, SendMessageCreatorType} from "./dialogs-reducer";
-import sidebareducer from "./sidebar-reducer";
+import profileReducer, {AddPostActionType, ProfilePageType, UpdateNewPostActionTYpe} from "./profile-reducer";
+import dialogsReducer, {
+    UpdateNewMassageBodyCreatorType,
+    SendMessageCreatorType,
+    DialogsPageType
+} from "./dialogs-reducer";
+import sidebareducer, {sideBarType} from "./sidebar-reducer";
+
+export type StateType = {
+    profilePage: ProfilePageType
+    dialogsPage: DialogsPageType
+    sideBar: sideBarType
+
+}
 
 export type StoreType = {
     _state: StateType

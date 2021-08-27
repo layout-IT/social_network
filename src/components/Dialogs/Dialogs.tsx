@@ -1,10 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import DialigItem from "./DialogItem/DialogsItem";
-import {DialogsType, MessagesType} from '../redux/types';
-import {ActionsTypes} from "../redux/store";
-import {SendMessageAC, updateNewMassageBodyAC} from "../redux/dialogs-reducer";
-
+import {DialogsPropsType} from "./Dialogs-container";
 
 function Message(props: MessageType) {
     return <div className={s.message}>{props.title}</div>
@@ -15,21 +12,10 @@ type MessageType = {
 }
 
 
-type DialogsPropsType = {
-    updateNewMassageBody: (body:any) => void
-    SendMessage:() => void
-    messages: Array<MessagesType>
-     dialogs: Array<DialogsType>
-     newMessageBody: string
-
-
-
-}
-
 
 export function Dialogs(props: DialogsPropsType) {
-    let dialogsElement = props.dialogs.map(d => <DialigItem name={d.name} id={d.id}/>)
-    let messagesElements = props.messages.map(m => <Message title={m.title}/>)
+    let dialogsElement = props.dialogs.map(d => <DialigItem key={d.id} name={d.name} id={d.id}/>)
+    let messagesElements = props.messages.map(m => <Message key={m.id} title={m.title}/>)
     let newMessageBody = props.newMessageBody
     let onSendMassageClick = () => {
         props.SendMessage()

@@ -1,10 +1,10 @@
-import {sideBarType} from "./types";
+export type sideBarType = {}
 
 let initialState = {
 
 }
 
-const sidebareducer = (state: sideBarType = initialState, action: any) => {
+const sidebareducer = (state: sideBarType = initialState, action: any): sideBarType => {
 
 
     return state

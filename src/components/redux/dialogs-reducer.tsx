@@ -1,9 +1,31 @@
-import {DialogsPageType} from "./types";
+
 
 export type UpdateNewMassageBodyCreatorType = ReturnType<typeof updateNewMassageBodyAC>
 export type SendMessageCreatorType = ReturnType<typeof SendMessageAC>
 
-let initialState = {
+export type newPostTextType = string
+
+
+export type DialogsType = {
+    id: number
+    name: string
+
+}
+
+export type MessagesType = {
+    id: number
+    title: string
+}
+
+export type DialogsPageType = {
+    messages: Array<MessagesType>
+    dialogs: Array<DialogsType>
+    newMessageBody: string
+
+}
+
+
+let initialState :initialStateType = {
     messages: [
         {id: 1, title: 'hi'},
         {id: 2, title: 'How is yor it kamasutra?'},
@@ -19,16 +41,21 @@ let initialState = {
     newMessageBody: ''
 }
 
-const dialogsReducer = (state: DialogsPageType = initialState, action: UpdateNewMassageBodyCreatorType | SendMessageCreatorType) => {
+export type initialStateType ={
+    messages: Array<MessagesType>
+    dialogs: Array<DialogsType>
+    newMessageBody: string
+}
+
+const dialogsReducer = (state: DialogsPageType = initialState, action: UpdateNewMassageBodyCreatorType | SendMessageCreatorType): DialogsPageType => {
     switch (action.type) {
-        case 'UPDATE-NEW-MESSAGE-BODY':
-            state.newMessageBody = action.body;
-            return state;
+        case 'UPDATE-NEW-MESSAGE-BODY':{
+            return {...state,newMessageBody : action.body};
+        }
         case 'SEND-MESSAGE' :
             let body = state.newMessageBody;
-            state.messages.push({id: new Date().getTime(), title: body})
-            state.newMessageBody = ''
-            return state;
+            return  {...state, messages: [...state.messages,{id: new Date().getTime(), title: body}], dialogs: [...state.dialogs],newMessageBody : ''} ;
+
         default:
             return state
     }
