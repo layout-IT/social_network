@@ -47,7 +47,7 @@ export type initialStateType ={
     newMessageBody: string
 }
 
-const dialogsReducer = (state: DialogsPageType = initialState, action: UpdateNewMassageBodyCreatorType | SendMessageCreatorType): DialogsPageType => {
+const dialogsReducer = (state: initialStateType = initialState, action: UpdateNewMassageBodyCreatorType | SendMessageCreatorType): DialogsPageType => {
     switch (action.type) {
         case 'UPDATE-NEW-MESSAGE-BODY':{
             return {...state,newMessageBody : action.body};

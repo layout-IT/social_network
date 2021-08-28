@@ -5,6 +5,8 @@ import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import {DialogsContainer} from "./components/Dialogs/Dialogs-container";
+import Users from "./components/Users/Users";
+import UsersContainer from "./components/Users/UsersContainer";
 
 
 
@@ -25,8 +27,7 @@ function App() {
                         <DialogsContainer
                             // messages={props.state.dialogsPage.messages}
                             //      dialogs={props.state.dialogsPage.dialogs}
-                            //      newMessageBody={props.state.dialogsPage.newMessageBody}
-
+                            //      newMessageBody={props.state.dialogsPage.newMessageBody
                         />}
 
 
@@ -39,6 +40,9 @@ function App() {
                          />}
                     />
 
+                    <Route path='/users' render={() =>
+                        <UsersContainer/> }
+                    />
                 </div>
             </div>
         </div>
