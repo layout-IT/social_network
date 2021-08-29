@@ -48,7 +48,13 @@
     cursor: pointer;
     background-color: rgba(229, 205, 205, 0.33);
     color: #7b7b7b;
+    align-self: center;
+
+}
+
+.button:hover{
     box-shadow: 3px 3px 10px black ;
+
 
 }
 
@@ -56,6 +62,10 @@
 
     box-shadow: 1px 1px 5px black ;
 
+}
+
+.wraooer_button{
+    margin: 0 auto;
 }
 
 
