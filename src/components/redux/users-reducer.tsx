@@ -1,11 +1,16 @@
-import React from "react";
-
 export type followCreatorType = ReturnType<typeof followAC>
 export type unFollowCreatorType = ReturnType<typeof unFollowAC>
 export type setUserCreatorType = ReturnType<typeof setUsersAC>
+export type setCurrentPageAType = ReturnType<typeof setCurrentPageAC>
+export type setUsersTotalCountAT = ReturnType<typeof setUsersTotalCountAC>
 
 
-const initialState = { users: []}
+const initialState = {
+    users: [],
+    pageSize:100,
+    totalUsersCount: 0,
+    currentPage: 200,
+}
 
 export type UsersType = {
     id: number
@@ -18,8 +23,8 @@ export type UsersType = {
 }
 
 export type photosType = {
-    small : string
-    large : string
+    small: string
+    large: string
 }
 
 export type locationType = {
@@ -28,9 +33,18 @@ export type locationType = {
 }
 export type initialStateType = {
     users: UsersType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
-const usersReducer = (state: initialStateType = initialState, action: followCreatorType | unFollowCreatorType | setUserCreatorType) => {
+type wrapperType = followCreatorType |
+    unFollowCreatorType |
+    setUserCreatorType |
+    setCurrentPageAType|
+    setUsersTotalCountAT
+
+const usersReducer = (state: initialStateType = initialState, action: wrapperType) => {
     switch (action.type) {
         case 'FOLLOW' :
             return {
@@ -56,9 +70,14 @@ const usersReducer = (state: initialStateType = initialState, action: followCrea
                 )
             }
         case 'SET-USERS': {
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
         }
-
+        case 'SET-CURRENT-PAGE': {
+            return {...state, currentPage: action.currentPage}
+        }
+        case 'SET-USERS-TOTAL-COUNT': {
+            return {...state, totalUsersCount : action.totalCount}
+        }
 
         default:
             return state
@@ -84,6 +103,18 @@ export const setUsersAC = (users: UsersType[]) => {
     return {
         type: 'SET-USERS',
         users,
+    } as const
+}
+export const setCurrentPageAC = (currentPage: number) => {
+    return {
+        type: 'SET-CURRENT-PAGE',
+        currentPage
+    } as const
+}
+export const setUsersTotalCountAC = (totalCount: number) => {
+    return {
+        type: 'SET-USERS-TOTAL-COUNT',
+        totalCount
     } as const
 }
 

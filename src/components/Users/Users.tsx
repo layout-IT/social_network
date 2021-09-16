@@ -1,22 +1,41 @@
 import React from "react";
 import {mapPropsdispatchType} from "./UsersContainer";
 import s from './Users.module.css'
-import  axios from "axios";
+import axios from "axios";
 import userImg from '../../assets/images/c3224969bcc3648eb22ca478989fcfbb--mr-robot-robots.jpg'
 
 
 class User extends React.Component <mapPropsdispatchType> {
 
     componentDidMount() {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            this.props.setUsers(response.data.items)
-        })
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?
+         page=${this.props.currentPage}&count=${this.props.pageSize}`).then(response => {
+             this.props.setUsers(response.data.items);
+             this.props.setTotalUsersCount(response.data.totalCount);
+         })
     }
 
 
     render() {
+        let pageesCount = Math.ceil( this.props.totalUsersCount / this.props.pageSize)
+        let pages = []
+        for (let i = 1; i <= pageesCount + 1; i++) {
+            pages.push(i)
+        }
+       let onPageChenged = (pageNumber : number) => {
+            this.props.setCurrentPage(pageNumber)
+                axios.get(`https://social-network.samuraijs.com/api/1.0/users?
+         page=${pageNumber}&count=${this.props.pageSize}`).then(response => {this.props.setUsers(response.data.items)})
+
+        }
+
         return <div className={s.wrapper}>
-            {/*<button onClick={this.getUsers}>Get users</button>*/}
+            <ul className={s.number_pages}>
+                {pages.map(m => {
+                    return <li className={s.numbers}><span className={this.props.currentPage === m  ? s.active : ''}
+                                                           onClick={(e)=>onPageChenged(m)}>{m }</span></li>
+                })}
+            </ul>
             {
                 this.props.users.map(u => <div className={s.container} key={u.id}>
                     <div className={s.itemsL}>
