@@ -5,16 +5,7 @@ import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import {DialogsContainer} from "./components/Dialogs/Dialogs-container";
-import Users from "./components/Users/Users";
 import UsersContainer from "./components/Users/UsersContainer";
-
-
-
-
-//type AppPropsType = {
-//     state: StateType
-//     dispatch: (action: ActionsTypes) => void
-// }
 
 function App() {
     return (
@@ -24,25 +15,15 @@ function App() {
                 <Nav/>
                 <div className='app-wrapper-contant'>
                     <Route path='/dialogs' render={() =>
-                        <DialogsContainer
-                            // messages={props.state.dialogsPage.messages}
-                            //      dialogs={props.state.dialogsPage.dialogs}
-                            //      newMessageBody={props.state.dialogsPage.newMessageBody
-                        />}
+                        <DialogsContainer/>}
 
 
                     />
                     <Route path='/profile' render={() =>
-                        <Profile
-
-                        // profilePage={props.state.profilePage}
-                         //     dispatch={props.dispatch}
-                         />}
+                        <Profile/>}
                     />
 
-                    <Route path='/users' render={() =>
-                        <UsersContainer/> }
-                    />
+                    <Route path='/users' render={() =><UsersContainer/>}/>
                 </div>
             </div>
         </div>

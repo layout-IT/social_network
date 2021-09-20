@@ -1,5 +1,3 @@
-
-
 export type UpdateNewMassageBodyCreatorType = ReturnType<typeof updateNewMassageBodyAC>
 export type SendMessageCreatorType = ReturnType<typeof SendMessageAC>
 
@@ -18,7 +16,7 @@ export type MessagesType = {
 }
 
 
-let initialState :initialStateType = {
+let initialState: initialStateType = {
     messages: [
         {id: 1, title: 'hi'},
         {id: 2, title: 'How is yor it kamasutra?'},
@@ -34,7 +32,7 @@ let initialState :initialStateType = {
     newMessageBody: ''
 }
 
-export type initialStateType ={
+export type initialStateType = {
     messages: Array<MessagesType>
     dialogs: Array<DialogsType>
     newMessageBody: string
@@ -42,12 +40,17 @@ export type initialStateType ={
 
 const dialogsReducer = (state: initialStateType = initialState, action: UpdateNewMassageBodyCreatorType | SendMessageCreatorType): initialStateType => {
     switch (action.type) {
-        case 'UPDATE-NEW-MESSAGE-BODY':{
-            return {...state,newMessageBody : action.body};
+        case 'UPDATE-NEW-MESSAGE-BODY': {
+            return {...state, newMessageBody: action.body};
         }
         case 'SEND-MESSAGE' :
             let body = state.newMessageBody;
-            return  {...state, messages: [...state.messages,{id: new Date().getTime(), title: body}], dialogs: [...state.dialogs],newMessageBody : ''} ;
+            return {
+                ...state,
+                messages: [...state.messages, {id: new Date().getTime(), title: body}],
+                dialogs: [...state.dialogs],
+                newMessageBody: ''
+            };
 
         default:
             return state

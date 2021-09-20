@@ -7,7 +7,7 @@ export type setUsersTotalCountAT = ReturnType<typeof setUsersTotalCountAC>
 
 const initialState = {
     users: [],
-    pageSize:100,
+    pageSize: 100,
     totalUsersCount: 0,
     currentPage: 200,
 }
@@ -41,7 +41,7 @@ export type initialStateType = {
 type wrapperType = followCreatorType |
     unFollowCreatorType |
     setUserCreatorType |
-    setCurrentPageAType|
+    setCurrentPageAType |
     setUsersTotalCountAT
 
 const usersReducer = (state: initialStateType = initialState, action: wrapperType) => {
@@ -76,7 +76,7 @@ const usersReducer = (state: initialStateType = initialState, action: wrapperTyp
             return {...state, currentPage: action.currentPage}
         }
         case 'SET-USERS-TOTAL-COUNT': {
-            return {...state, totalUsersCount : action.totalCount}
+            return {...state, totalUsersCount: action.totalCount}
         }
 
         default:
