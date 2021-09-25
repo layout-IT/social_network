@@ -3,10 +3,12 @@ import {newPostTextType} from "./dialogs-reducer";
 
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
 export type UpdateNewPostActionTYpe = ReturnType<typeof updateNewPostActionCreator>
+export type setUserProfileTYpe = ReturnType<typeof setUserProfile>
 
 export type ProfilePageType = {
     posts: Array<PostType>
     newPostText: newPostTextType
+    profile: any
 }
 
 export type PostType = {
@@ -22,10 +24,13 @@ let initialState = {
             {id: 1, title: 'hi, how are you', like: 12},
             {id: 2, title: 'it`s my first post', like: 15}
         ],
-    newPostText: 'it.comm'
+    newPostText: 'it.comm',
+    profile: null
 }
 
-const profileReducer = (state: ProfilePageType = initialState, action: AddPostActionType | UpdateNewPostActionTYpe): ProfilePageType => {
+
+
+const profileReducer = (state: ProfilePageType = initialState, action: AddPostActionType | UpdateNewPostActionTYpe|setUserProfileTYpe ): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost:
@@ -40,7 +45,8 @@ const profileReducer = (state: ProfilePageType = initialState, action: AddPostAc
         case 'UPDATE-NEW-TEXT' :
             return  {...state,newPostText : action.newText}
 
-
+        case 'SET-USER-PROFILE':
+            return {...state, profile: action.profile}
         default:
             return state;
 
@@ -59,6 +65,13 @@ export const updateNewPostActionCreator = (newText: string) => {
     return {
         type: 'UPDATE-NEW-TEXT',
         newText
+    } as const
+}
+
+export const setUserProfile = (profile : any) => {
+    return {
+        type: 'SET-USER-PROFILE',
+        profile
     } as const
 }
 export default profileReducer;

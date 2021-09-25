@@ -2,10 +2,11 @@ import React from 'react';
 import './App.css';
 import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
-import Profile from "./components/Profile/Profile";
 import {Route} from "react-router-dom";
 import {DialogsContainer} from "./components/Dialogs/Dialogs-container";
 import UsersContainer from "./components/Users/UsersContainer";
+import ProfileContainer from "./components/Profile/ProfileContainer";
+import { useSelector} from "react-redux";
 
 function App() {
     return (
@@ -19,11 +20,11 @@ function App() {
 
 
                     />
-                    <Route path='/profile' render={() =>
-                        <Profile/>}
+                    <Route path='/profile/:userId' render={() =>
+                        <ProfileContainer  />}
                     />
 
-                    <Route path='/users' render={() =><UsersContainer/>}/>
+                    <Route path='/users' render={() => <UsersContainer/>}/>
                 </div>
             </div>
         </div>
