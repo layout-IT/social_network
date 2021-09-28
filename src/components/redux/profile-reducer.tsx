@@ -18,7 +18,7 @@ export type PostType = {
 }
 
 
-let initialState = {
+ let initialState = {
     posts:
         [
             {id: 1, title: 'hi, how are you', like: 12},

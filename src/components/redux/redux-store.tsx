@@ -3,6 +3,7 @@ import profileReducer from "./profile-reducer";
 import dialogsReducer from "./dialogs-reducer";
 import sidebareducer from "./sidebar-reducer";
 import usersReducer from "./users-reducer";
+import AuthReducer from "./auth-reducer";
 
 
 export let reducer = combineReducers({
@@ -10,6 +11,7 @@ export let reducer = combineReducers({
     dialogsPage: dialogsReducer,
     sideBar: sidebareducer,
     usersPage: usersReducer,
+    auth: AuthReducer,
 });
 export type AppStateType = ReturnType<typeof reducer>
 
