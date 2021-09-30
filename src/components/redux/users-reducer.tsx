@@ -1,11 +1,52 @@
-export type followCreatorType = ReturnType<typeof follow>
-export type unFollowCreatorType = ReturnType<typeof unFollow>
+import {usersAPI} from "../../API/Api";
+
+export type followCreatorType = ReturnType<typeof followSuccess>
+export type unFollowCreatorType = ReturnType<typeof unFollowSuccess>
 export type setUserCreatorType = ReturnType<typeof setUsers>
 export type setCurrentPageAType = ReturnType<typeof setCurrentPage>
 export type setTotalUsersCountAT = ReturnType<typeof setTotalUsersCount>
 export type toggleIsFetchingAT = ReturnType<typeof toggleIsFetching>
 export type toggleIsFollowingProgressT = ReturnType<typeof toggleIsFollowingProgress>
 
+export const getUsers= (currentPage:number,pageSize:number)=>{
+    return (dispatch:any) => {
+        (toggleIsFetching(true));
+
+        usersAPI.getUsers(currentPage,pageSize).then(data => {
+            dispatch(toggleIsFetching(false));
+            dispatch(setUsers(data.items));
+            dispatch(setTotalUsersCount(data.totalCount));
+        })
+    }
+}
+
+export const follow = (userId:number)=>{
+    return (dispatch:any) => {
+        dispatch(toggleIsFollowingProgress(true,userId))
+        usersAPI.follow(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch( followSuccess(userId))
+                }
+                dispatch(toggleIsFollowingProgress(false, userId))
+
+            })
+    }
+}
+
+export const unfollow = (userId:number)=>{
+    return (dispatch:any) => {
+        dispatch(toggleIsFollowingProgress(true,userId))
+        usersAPI.unFollowSuccess(userId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch( unFollowSuccess(userId))
+                }
+                dispatch(toggleIsFollowingProgress(false, userId))
+
+            })
+    }
+}
 
 const initialState = {
     users: [],
@@ -67,7 +108,6 @@ const usersReducer = (state: initialStateType = initialState, action: wrapperTyp
                     }
                 )
             }
-
         case 'UNFOLLOW' :
             return {
                 ...state,
@@ -91,7 +131,6 @@ const usersReducer = (state: initialStateType = initialState, action: wrapperTyp
         case 'TOGGLE-IS-FETCHING': {
             return {...state, isFetching: action.isFetching}
         }
-
         case 'TOGGLE-IS-FOLLOWING-PROGRASS' :
             return {
                 ...state,
@@ -102,14 +141,14 @@ const usersReducer = (state: initialStateType = initialState, action: wrapperTyp
             return state
     }
 }
-export const follow = (userId: number) => {
+export const followSuccess = (userId: number) => {
     return {
         type: 'FOLLOW',
         userId,
 
     } as const
 }
-export const unFollow = (userId: number) => {
+export const unFollowSuccess = (userId: number) => {
     return {
         type: 'UNFOLLOW',
         userId,
@@ -139,7 +178,6 @@ export const toggleIsFetching = (isFetching: boolean) => {
         isFetching
     } as const
 }
-
 export const toggleIsFollowingProgress = (isFetching: boolean, userId: number) => {
     return {
         type: 'TOGGLE-IS-FOLLOWING-PROGRASS',
@@ -147,5 +185,6 @@ export const toggleIsFollowingProgress = (isFetching: boolean, userId: number) =
         userId,
     } as const
 }
+
 
 export default usersReducer
