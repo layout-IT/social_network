@@ -1,3 +1,5 @@
+import {authAPI} from "../../API/Api";
+
 type SetAuthUserDataT = ReturnType<typeof SetAuthUserData>
 
 
@@ -5,7 +7,7 @@ let initialState: initialStateType = {
     userId: 1,
     email: 'ailru',
     login: 'free',
-    isAuth: true,
+    isAuth: false,
 }
 
 export type initialStateType = {
@@ -44,6 +46,14 @@ export const SetAuthUserData = (userId: number, email: string, login: string) =>
         }
     } as const
 }
+export const getAuthUserData=() => (dispatch: any) => {
+    authAPI.me()
+        .then(response => {
+        if (response.data.resultCode === 0) {
+            let {id, email, login} = response.data.data
+            dispatch(SetAuthUserData(id, email, login))
+        }
+    })
 
-
+}
 export default AuthReducer;

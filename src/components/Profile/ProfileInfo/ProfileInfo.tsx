@@ -2,12 +2,12 @@ import React from 'react';
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/preloader/preloader";
 
-type ProfileInfoType={
-    profile:any
+type ProfileInfoType = {
+    profile: any
 }
 
 const ProfileInfo = (props: ProfileInfoType) => {
-    if (!props.profile){
+    if (!props.profile) {
         return <Preloader/>
     }
 
@@ -21,4 +21,4 @@ const ProfileInfo = (props: ProfileInfoType) => {
     </div>
 
 }
-    export default ProfileInfo
+export default ProfileInfo

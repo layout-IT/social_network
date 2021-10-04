@@ -120,4 +120,5 @@ margin-right: 0;
 .active{
     font-weight: bold;
     font-size: 20px;
+    color: red;
 }

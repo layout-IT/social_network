@@ -1,4 +1,5 @@
 import {newPostTextType} from "./dialogs-reducer";
+import {usersAPI} from "../../API/Api";
 
 
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
@@ -73,5 +74,10 @@ export const setUserProfile = (profile : any) => {
         type: 'SET-USER-PROFILE',
         profile
     } as const
+}
+export const getUserProfile = (userId : any) => (dispatch: any) => {
+    usersAPI.getProfile(userId).then(response => {
+        dispatch(setUserProfile(response.data))
+    })
 }
 export default profileReducer;

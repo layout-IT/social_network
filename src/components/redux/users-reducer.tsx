@@ -8,39 +8,38 @@ export type setTotalUsersCountAT = ReturnType<typeof setTotalUsersCount>
 export type toggleIsFetchingAT = ReturnType<typeof toggleIsFetching>
 export type toggleIsFollowingProgressT = ReturnType<typeof toggleIsFollowingProgress>
 
-export const getUsers= (currentPage:number,pageSize:number)=>{
-    return (dispatch:any) => {
-        (toggleIsFetching(true));
+export const getUsers = (currentPage: number, pageSize: number) => (dispatch: any) => {
+    dispatch(toggleIsFetching(true));
 
-        usersAPI.getUsers(currentPage,pageSize).then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-            dispatch(setTotalUsersCount(data.totalCount));
+    usersAPI.getUsers(currentPage, pageSize).then(data => {
+        dispatch(toggleIsFetching(false));
+        dispatch(setUsers(data.items));
+        dispatch(setTotalUsersCount(data.totalCount));
+    })
+}
+
+export const follow = (userId: number) => {
+    debugger
+    return (dispatch: any) => {
+        dispatch(toggleIsFollowingProgress(true, userId));
+        usersAPI.follow(userId).then(response => {
+            if (response.data.resultCode === 0) {
+                dispatch(followSuccess(userId))
+            }
+            dispatch(toggleIsFollowingProgress(false, userId))
+
         })
     }
 }
 
-export const follow = (userId:number)=>{
-    return (dispatch:any) => {
-        dispatch(toggleIsFollowingProgress(true,userId))
-        usersAPI.follow(userId)
+export const unfollow = (userId: number) => {
+    debugger
+    return (dispatch: any) => {
+        dispatch(toggleIsFollowingProgress(true, userId));
+        usersAPI.unfollow(userId)
             .then(response => {
                 if (response.data.resultCode === 0) {
-                    dispatch( followSuccess(userId))
-                }
-                dispatch(toggleIsFollowingProgress(false, userId))
-
-            })
-    }
-}
-
-export const unfollow = (userId:number)=>{
-    return (dispatch:any) => {
-        dispatch(toggleIsFollowingProgress(true,userId))
-        usersAPI.unFollowSuccess(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch( unFollowSuccess(userId))
+                    dispatch(unFollowSuccess(userId))
                 }
                 dispatch(toggleIsFollowingProgress(false, userId))
 
@@ -53,7 +52,7 @@ const initialState = {
     pageSize: 100,
     totalUsersCount: 0,
     currentPage: 200,
-    isFetching: true,
+    isFetching: false,
     followingInProgress: [],
 }
 
