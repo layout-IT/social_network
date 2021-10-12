@@ -1,9 +1,12 @@
 import React from 'react';
 import s from './ProfileInfo.module.css'
 import {Preloader} from "../../common/preloader/preloader";
+import ProfileStatus from "./ProfileStatus";
 
 type ProfileInfoType = {
     profile: any
+    status:string
+    updateStatus:any
 }
 
 const ProfileInfo = (props: ProfileInfoType) => {
@@ -14,9 +17,7 @@ const ProfileInfo = (props: ProfileInfoType) => {
     return <div>
         <div className={s.picture}>
             <img src={props.profile.photos.large} alt="ptcture"/>
-        </div>
-        <div>
-            ava + description
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
         </div>
     </div>
 

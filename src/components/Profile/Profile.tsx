@@ -5,12 +5,14 @@ import {Redirect} from "react-router-dom";
 
 type ProfileType = {
     profile: any
+    status:string
+    updateStatus:any
 }
 
 const Profile = (props: ProfileType) => {
 
     return <div>
-        <ProfileInfo profile={props.profile}/>
+        <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
 
         <MyPostsContainer/>
     </div>
