@@ -1,15 +1,12 @@
-import {newPostTextType} from "./dialogs-reducer";
 import {profileAPI, usersAPI} from "../../API/Api";
 
 
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
-export type UpdateNewPostActionTYpe = ReturnType<typeof updateNewPostActionCreator>
 export type setUserProfileTYpe = ReturnType<typeof setUserProfile>
 export type setStatusTYpe = ReturnType<typeof setStatus>
 
 export type ProfilePageType = {
     posts: Array<PostType>
-    newPostText: newPostTextType
     profile: any
     status:string
 }
@@ -27,14 +24,13 @@ export type PostType = {
             {id: 1, title: 'hi, how are you', like: 12},
             {id: 2, title: 'it`s my first post', like: 15}
         ],
-    newPostText: 'it.comm',
     profile: null,
      status:''
 }
 
 
 
-const profileReducer = (state: ProfilePageType = initialState, action: AddPostActionType | UpdateNewPostActionTYpe|setUserProfileTYpe|setStatusTYpe ): ProfilePageType => {
+const profileReducer = (state: ProfilePageType = initialState, action: AddPostActionType |setUserProfileTYpe|setStatusTYpe ): ProfilePageType => {
     switch (action.type) {
         case 'ADD-POST': {
             let newPost:
@@ -43,11 +39,9 @@ const profileReducer = (state: ProfilePageType = initialState, action: AddPostAc
                 title: action.newPostText,
                 like: new Date().getTime(),
             };
-            return{...state,posts : [...state.posts, newPost],newPostText : ''};
+            return{...state,posts : [...state.posts, newPost]};
         }
 
-        case 'UPDATE-NEW-TEXT' :
-            return  {...state,newPostText : action.newText}
         case 'SET-STATUS' :
             return  {...state,status : action.status}
 
@@ -67,12 +61,6 @@ export const addPostActionCreator = (newPostText: string) => {
     } as const
 }
 
-export const updateNewPostActionCreator = (newText: string) => {
-    return {
-        type: 'UPDATE-NEW-TEXT',
-        newText
-    } as const
-}
 
 export const setUserProfile = (profile : any) => {
     return {

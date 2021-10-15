@@ -2,47 +2,43 @@ import React from 'react';
 import s from './MyPosts.module.css'
 import Post from "./Post/Post";
 import {PropsMType} from "./MyPostsContainer";
+import {reduxForm, Field, InjectedFormProps} from "redux-form";
 
+const AddNewPostForm :React.FC<InjectedFormProps>= (props)=>{
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field name='newPostText'  component='textarea' />
+            <button >Add post</button>
+        </form>
+    )
+}
 
-// type MyPostsType = {
-//     posts: Array<PostType>
-//     newPostText: string
-//  //   dispatch: any
-//     updateNewPostText:(text:string)=> void
-//     addPost:()=> void
-// }
-
+export const AddNewPostReduxForm = reduxForm({
+    form:'ProfileAddNewPostForm'
+})(AddNewPostForm)
 
 const MyPosts = (props: PropsMType) => {
 
     let postsElement = props.posts.map((p) => <Post key={p.id} message={p.title} like={p.like}/>);
-    let newPostElement = React.createRef<HTMLTextAreaElement>()
+//    let newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    let onAddPost = () => {
-       // props.addPost()
-        //props.dispatch(addPostActionCreator(props.newPostText))
-         props.addPost(props.newPostText)
+    let onAddPost = (values:any) => {
+        props.addPost(values.newPostText)
 
     }
-    let onPostChange = () => {
 
-        if (newPostElement.current !== null) {
-            let text = newPostElement.current.value
-            props.onPostChange(text)
-
-        }
-
-    }
     return <div>
         <div>
             My posts
         </div>
-        <textarea onChange={onPostChange} ref={newPostElement} value={props.newPostText}/>
-        <button onClick={onAddPost}>Add post</button>
+      <AddNewPostReduxForm onSubmit={onAddPost}  />
         <div className={s.posts}>
             {postsElement}
         </div>
     </div>
 
 }
+
+
+
 export default MyPosts
