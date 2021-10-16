@@ -11,7 +11,7 @@ export const Header = (props: HeaderPropsType) => {
         <img
             src={'https://www.markakimlik.com/wp-content/uploads/2020/09/Markalasma-Surecinde-Logo-ve-Renk-Duzeni.jpg'}/>
         <div className={s.loginBlock}>
-            {props.isAuth ? props.login : <NavLink className={s.login} to={'/login'}>login</NavLink>}
+            {props.isAuth ? <div>{props.login} - <button onClick={props.logOut}>logOut</button> </div> : <NavLink className={s.login} to={'/login'}>login</NavLink>}
 
         </div>
     </header>

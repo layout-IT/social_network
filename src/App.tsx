@@ -6,7 +6,8 @@ import {DialogsContainer} from "./components/Dialogs/Dialogs-container";
 import UsersContainer from "./components/Users/UsersContainer";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderComtainer";
-import {Login} from "./components/Login/Login";
+import Login from "./components/Login/Login";
+
 
 
 function App() {

@@ -29,7 +29,7 @@ function ProfileContainer(props: PropsType) {
 
     let userId = props.match.params.userId
     if (!userId) {
-        userId = '2';
+        userId ='8162'
     }
     props.getUserProfile(userId)
     props.getUserStatus(userId)
