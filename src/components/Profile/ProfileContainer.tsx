@@ -19,8 +19,8 @@ type mapStatePropsType = {
 
 type mapDispatchPropsType = {
     getUserProfile: (userId: number) => void
-    getUserStatus:(userId: number) => void
-    updateUserStatus:(status : string) => void
+    getUserStatus: (userId: number) => void
+    updateUserStatus: (status: string) => void
 }
 type OwnPropsType = mapStatePropsType & mapDispatchPropsType
 type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
@@ -29,7 +29,7 @@ function ProfileContainer(props: PropsType) {
 
     let userId = props.match.params.userId
     if (!userId) {
-        userId ='8162'
+        props.history.push('/users')
     }
     props.getUserProfile(userId)
     props.getUserStatus(userId)
@@ -44,11 +44,11 @@ let AuthRedirectComponent = withAythRedirect(ProfileContainer)
 
 let mapStatetoProps = (state: AppStateType): mapStatePropsType => ({
     profile: state.profilePage.profile,
-    status : state.profilePage.status,
+    status: state.profilePage.status,
 
 })
 
 let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent)
 export default connect(mapStatetoProps, {
-    getUserProfile,getUserStatus,updateUserStatus
+    getUserProfile, getUserStatus, updateUserStatus
 })(WithUrlDataContainerComponent)

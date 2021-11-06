@@ -8,11 +8,12 @@ export type setTotalUsersCountAT = ReturnType<typeof setTotalUsersCount>
 export type toggleIsFetchingAT = ReturnType<typeof toggleIsFetching>
 export type toggleIsFollowingProgressT = ReturnType<typeof toggleIsFollowingProgress>
 
-export const getUsers = (currentPage: number, pageSize: number) => (dispatch: any) => {
+export const requestYsers = (page: number, pageSize: number) => (dispatch: any) => {
     dispatch(toggleIsFetching(true));
 
-    usersAPI.getUsers(currentPage, pageSize).then(data => {
+    usersAPI.getUsers(page, pageSize).then(data => {
         dispatch(toggleIsFetching(false));
+        dispatch(setCurrentPage(page));
         dispatch(setUsers(data.items));
         dispatch(setTotalUsersCount(data.totalCount));
     })

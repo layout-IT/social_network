@@ -1,4 +1,4 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 import s from './ProfileStatus.module.css'
 
 
@@ -12,6 +12,10 @@ const ProfileStatus = (props: ProfileStatusType) => {
         editMode: false,
         status: props.status
     })
+    useEffect( () => {
+setState({...state,status: props.status})
+    },[props.status])
+
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setState({...state, status: e.currentTarget.value})
     }
