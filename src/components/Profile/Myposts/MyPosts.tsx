@@ -17,8 +17,8 @@ export const AddNewPostReduxForm = reduxForm({
     form:'ProfileAddNewPostForm'
 })(AddNewPostForm)
 
-const MyPosts = (props: PropsMType) => {
-
+const MyPosts = React.memo( (props: PropsMType) => {
+    console.log('yo')
     let postsElement = props.posts.map((p) => <Post key={p.id} message={p.title} like={p.like}/>);
 //    let newPostElement = React.createRef<HTMLTextAreaElement>()
 
@@ -31,13 +31,13 @@ const MyPosts = (props: PropsMType) => {
         <div>
             My posts
         </div>
-      <AddNewPostReduxForm onSubmit={onAddPost}  />
+        <AddNewPostReduxForm onSubmit={onAddPost}  />
         <div className={s.posts}>
             {postsElement}
         </div>
     </div>
 
-}
+})
 
 
 
