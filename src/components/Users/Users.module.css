@@ -102,23 +102,3 @@
     max-width: 500px;
     flex-wrap: wrap;
 }
-
-.number_pages{
-    display: flex;
-
-    flex-wrap: wrap;
-}
-
-.numbers{
-margin-right: 15px;
-    cursor: pointer;
-}
-.numbers:last-child{
-margin-right: 0;
-}
-
-.active{
-    font-weight: bold;
-    font-size: 20px;
-    color: red;
-}

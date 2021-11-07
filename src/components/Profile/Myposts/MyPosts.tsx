@@ -18,7 +18,6 @@ export const AddNewPostReduxForm = reduxForm({
 })(AddNewPostForm)
 
 const MyPosts = React.memo( (props: PropsMType) => {
-    console.log('yo')
     let postsElement = props.posts.map((p) => <Post key={p.id} message={p.title} like={p.like}/>);
 //    let newPostElement = React.createRef<HTMLTextAreaElement>()
 

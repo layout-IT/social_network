@@ -1,4 +1,6 @@
+import {Dispatch} from "redux";
 import {usersAPI} from "../../API/Api";
+import {updateObjectInArray} from "../../utils/helper";
 
 export type followCreatorType = ReturnType<typeof followSuccess>
 export type unFollowCreatorType = ReturnType<typeof unFollowSuccess>
@@ -8,43 +10,35 @@ export type setTotalUsersCountAT = ReturnType<typeof setTotalUsersCount>
 export type toggleIsFetchingAT = ReturnType<typeof toggleIsFetching>
 export type toggleIsFollowingProgressT = ReturnType<typeof toggleIsFollowingProgress>
 
-export const requestYsers = (page: number, pageSize: number) => (dispatch: any) => {
+export const requestYsers = (page: number, pageSize: number) => async (dispatch: any) => {
     dispatch(toggleIsFetching(true));
-
-    usersAPI.getUsers(page, pageSize).then(data => {
-        dispatch(toggleIsFetching(false));
-        dispatch(setCurrentPage(page));
-        dispatch(setUsers(data.items));
-        dispatch(setTotalUsersCount(data.totalCount));
-    })
+    let data = await usersAPI.getUsers(page, pageSize);
+    dispatch(toggleIsFetching(false));
+    dispatch(setCurrentPage(page));
+    dispatch(setUsers(data.items));
+    dispatch(setTotalUsersCount(data.totalCount));
 }
 
-export const follow = (userId: number) => {
-    debugger
-    return (dispatch: any) => {
-        dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.follow(userId).then(response => {
-            if (response.data.resultCode === 0) {
-                dispatch(followSuccess(userId))
-            }
-            dispatch(toggleIsFollowingProgress(false, userId))
+const followUnfollowFlow = async (userId: number, dispatch: Dispatch, apiMethod: Function, AC: Function) => {
+    dispatch(toggleIsFollowingProgress(true, userId));
 
-        })
+    let response = await apiMethod(userId);
+    if (response.data.resultCode === 0) {
+        dispatch(AC(userId))
+    }
+    dispatch(toggleIsFollowingProgress(false, userId))
+}
+
+
+export const follow = (userId: number) => {
+    return async (dispatch: any) => {
+        followUnfollowFlow(userId, dispatch, usersAPI.follow.bind(usersAPI), followSuccess)
     }
 }
 
 export const unfollow = (userId: number) => {
-    debugger
-    return (dispatch: any) => {
-        dispatch(toggleIsFollowingProgress(true, userId));
-        usersAPI.unfollow(userId)
-            .then(response => {
-                if (response.data.resultCode === 0) {
-                    dispatch(unFollowSuccess(userId))
-                }
-                dispatch(toggleIsFollowingProgress(false, userId))
-
-            })
+    return async (dispatch: any) => {
+        followUnfollowFlow(userId, dispatch, usersAPI.unfollow.bind(usersAPI), unFollowSuccess)
     }
 }
 
@@ -100,24 +94,23 @@ const usersReducer = (state: initialStateType = initialState, action: wrapperTyp
         case 'FOLLOW' :
             return {
                 ...state,
-                users: state.users.map((m) => {
-                        if (m.id === action.userId) {
-                            return {...m, followed: true}
-                        }
-                        return m;
-                    }
-                )
+                users: updateObjectInArray(state.users,action.userId,'id',{followed: true})
+
             }
         case 'UNFOLLOW' :
             return {
                 ...state,
-                users: state.users.map((m) => {
-                        if (m.id === action.userId) {
-                            return {...m, followed: false}
-                        }
-                        return m;
-                    }
-                )
+                users:  updateObjectInArray(state.users,action.userId,'id',{followed: false})
+
+                //
+                //
+                //     state.users.map((m) => {
+                //         if (m.id === action.userId) {
+                //             return {...m, followed: false}
+                //         }
+                //         return m;
+                //     }
+                // )
             }
         case 'SET-USERS': {
             return {...state, users: action.users}
