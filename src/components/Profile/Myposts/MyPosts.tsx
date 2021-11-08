@@ -4,24 +4,24 @@ import Post from "./Post/Post";
 import {PropsMType} from "./MyPostsContainer";
 import {reduxForm, Field, InjectedFormProps} from "redux-form";
 
-const AddNewPostForm :React.FC<InjectedFormProps>= (props)=>{
+const AddNewPostForm: React.FC<InjectedFormProps> = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
-            <Field name='newPostText'  component='textarea' />
-            <button >Add post</button>
+            <Field name='newPostText' component='textarea'/>
+            <button>Add post</button>
         </form>
     )
 }
 
 export const AddNewPostReduxForm = reduxForm({
-    form:'ProfileAddNewPostForm'
+    form: 'ProfileAddNewPostForm'
 })(AddNewPostForm)
 
-const MyPosts = React.memo( (props: PropsMType) => {
+const MyPosts = React.memo((props: PropsMType) => {
     let postsElement = props.posts.map((p) => <Post key={p.id} message={p.title} like={p.like}/>);
-//    let newPostElement = React.createRef<HTMLTextAreaElement>()
+//   let newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    let onAddPost = (values:any) => {
+    let onAddPost = (values: any) => {
         props.addPost(values.newPostText)
 
     }
@@ -30,14 +30,13 @@ const MyPosts = React.memo( (props: PropsMType) => {
         <div>
             My posts
         </div>
-        <AddNewPostReduxForm onSubmit={onAddPost}  />
+        <AddNewPostReduxForm onSubmit={onAddPost}/>
         <div className={s.posts}>
             {postsElement}
         </div>
     </div>
 
 })
-
 
 
 export default MyPosts

@@ -21,9 +21,10 @@ export let Users = (props: UsersPropsType) => {
     for (let i = 1; i <= pageesCount + 1; i++) {
         pages.push(i)
     }
+
     return <div className={s.wrapper}>
         <Paginator currentPage={props.currentPage} onPageChenged={props.onPageChenged} pageSize={props.pageSize}
-                   totalUsersCount={props.totalUsersCount}/>
+                   totalUsersCount={props.totalUsersCount} splittingAccountsInto={10}/>
         {
             props.users.map(u => <User key={u.id} user={u}
                                        followingInProgress={props.followingInProgress}

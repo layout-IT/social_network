@@ -1,8 +1,9 @@
 
-.number_pages{
+.wrapper{
     display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 
-    flex-wrap: wrap;
 }
 
 .numbers{
@@ -17,4 +18,12 @@
     font-weight: bold;
     font-size: 20px;
     color: red;
+}
+
+button{
+    margin-right: 10px;
+}
+
+button:last-child{
+    margin-right: 0;
 }

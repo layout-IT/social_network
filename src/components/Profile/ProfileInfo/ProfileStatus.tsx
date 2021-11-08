@@ -18,16 +18,17 @@ setState({...state,status: props.status})
 
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setState({...state, status: e.currentTarget.value})
+        console.log(state.status)
     }
     const activatedMode = () => {
         setState({...state, editMode: true})
+
     }
     const deactivatedMode = () => {
         setState({...state, editMode: false})
         props.updateStatus(state.status)
 
     }
-
     return <div className={s.status}>
         {!state.editMode
             ?
