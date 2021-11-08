@@ -1,7 +1,7 @@
 import React from 'react';
 import s from './Dialogs.module.css'
 import DialigItem from "./DialogItem/DialogsItem";
-import {DialogsPropsType} from "./Dialogs-container";
+import {DialogsPropsType} from "./DialogsContainer";
 import {Redirect} from 'react-router-dom';
 import {Field, reduxForm, InjectedFormProps} from "redux-form";
 
