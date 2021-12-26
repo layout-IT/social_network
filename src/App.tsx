@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import './App.css';
+import './App.scss';
 import Nav from "./components/Nav/Nav";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderComtainer";
@@ -10,6 +10,10 @@ import { Route } from 'react-router-dom';
 import {AppStateType} from "./components/redux/redux-store";
 import {connect} from "react-redux";
 import {WithSuspense} from "./hoc/WithSuspense";
+import Settings from "./components/Settings/Settings";
+import Music from "./components/Music/Music";
+import News from './components/News/News';
+import LogLogout from "./components/LogLogout";
 
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
@@ -37,12 +41,17 @@ class App extends Component <AppPropsComponentype> {
             <div className="app-wrapper">
                 <HeaderContainer/>
                 <div className='app-container'>
-                    <Nav/>
-                    <div className='app-wrapper-contant'>
-                        <Route path='/dialogs' render = {WithSuspense(DialogsContainer)}/>
-                        <Route path='/profile/:userId' render={WithSuspense(ProfileContainer)}/>
-                        <Route path='/users' render={() => <UsersContainer/>}/>
-                        <Route path='/login' render={() => <Login/>}/>
+                    <div className='appWrapperContainer'>
+                        <Nav/>
+                        <div className='app-wrapper-contant'>
+                            <Route path='/dialogs' render = {WithSuspense(DialogsContainer)}/>
+                            <Route path='/profile/:userId' render={WithSuspense(ProfileContainer)}/>
+                            <Route path='/users' render={() => <UsersContainer/>}/>
+                            <Route path='/login' render={() => <Login/>}/>
+                            <Route path='/newa' render={() => <News/>}/>
+                            <Route path='/musik' render={() => <Music/>}/>
+                            <Route path='/settings' render={() => <Settings/>}/>
+                        </div>
                     </div>
                 </div>
             </div>

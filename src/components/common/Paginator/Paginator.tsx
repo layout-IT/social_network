@@ -11,15 +11,16 @@ type  UsersPropsType = {
 }
 
 export let Paginator = (props: UsersPropsType) => {
-    let pageesCount = Math.ceil(props.totalUsersCount / props.pageSize)
+    let pageesCount = Math.ceil(props.totalUsersCount / props.pageSize)// общее число / сколько делать на странице
+    console.log('props.totalUsersCount : ' + props.totalUsersCount +  'props.pageSize : ' + props.pageSize)// общее количество Пользователей /
     let pages = []
     for (let i = 1; i <= pageesCount + 1; i++) {
         pages.push(i)
     }
-    let numberOfBlocks = Math.ceil(pageesCount / props.splittingAccountsInto);
+    let numberOfBlocks = Math.ceil(pageesCount / props.splittingAccountsInto); // кол-во блоков = кол-во страниц / на сколько делить страницу
     let [porionNumber, setPortionNumber] = useState(1);
-    let leftBorder = (porionNumber - 1) * props.splittingAccountsInto + 1;
-    let rightBorder = porionNumber * props.splittingAccountsInto;
+    let leftBorder = (porionNumber - 1) * props.splittingAccountsInto + 1; // листать на лево
+    let rightBorder = porionNumber * props.splittingAccountsInto;  // листать на лево
 
     return <div className={s.wrapper}>
         {

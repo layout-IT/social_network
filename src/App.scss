@@ -1,0 +1,31 @@
+.app-wrapper {
+  margin: 0 auto;
+  display: grid;
+  width: 100%;
+
+}
+
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #EDEEF0;
+  padding: 20px;
+
+}
+
+.app-wrapper-contant {
+  flex: 0 1 80%;
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+
+
+}
+
+.appWrapperContainer {
+  display: flex;
+  max-width: 70%;
+  width: 100%;
+}

@@ -1,0 +1,115 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
+
+aside,
+nav,
+footer,
+header,
+section {
+  display: block;
+}
+
+input,
+button,
+input::-ms-clear {
+  display: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+ul li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+
+//===================================================================================
+
+.nav {
+  flex: 0 1 20%;
+  height: 100%;
+}
+
+
+a.active {
+  color: black;
+  font-weight: 600;
+}
+
+.item {
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  transition: all 0.3s ease ;
+  padding: 5px;
+&:hover {
+  background-color: rgba(229, 226, 226, 0.76);
+}
+  svg {
+    width: 20px;
+
+    path {
+      fill: #5181B8;
+    }
+  }
+
+}
+
+.item:last-child {
+  margin-bottom: 0px;
+}
+
+.nameStyle {
+  color: rgba(0, 0, 0, 0.71);
+  margin-left: 10px;
+}
