@@ -1,0 +1,79 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+
+.header {
+  border-bottom: 1px solid #5181B8;
+}
+
+.back {
+  text-align: left;
+  display: flex;
+  transition: all 0.3s ease;
+  padding: 10px;
+
+  p {
+    color: #5181B8;
+  }
+
+  svg {
+    width: 10px;
+    margin-right: 8px;
+
+    path {
+      fill: #5181B8
+    }
+  }
+
+  &:active {
+    p {
+      color: #1a66bb;
+      font-size: 15px;
+    }
+
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+
+  input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #1a66bb;
+    flex: 0 1 88%;
+  }
+  button{
+    padding: 5px 10px;
+    background-color: #0D61BC;
+    color: white;
+    border-radius: 5px;
+    flex: 0 1 10%;
+  }
+}
+
+.mapText {
+  color: #767474;
+  padding: 5px;
+}
+
+.text {
+  padding: 20px;
+}
+
+.wrapper {
+
+}
+
+.wrapper {
+
+}
+
+
+
+

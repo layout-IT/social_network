@@ -6,14 +6,14 @@ import HeaderContainer from "./components/Header/HeaderComtainer";
 import Login from "./components/Login/Login";
 import {initializeApp} from "./components/redux/app-reducer";
 import {Preloader} from "./components/common/preloader/preloader";
-import { Route } from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {AppStateType} from "./components/redux/redux-store";
 import {connect} from "react-redux";
 import {WithSuspense} from "./hoc/WithSuspense";
 import Settings from "./components/Settings/Settings";
 import Music from "./components/Music/Music";
 import News from './components/News/News';
-import LogLogout from "./components/LogLogout";
+import Message from "./components/Dialogs/Message/Message";
 
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
@@ -51,6 +51,7 @@ class App extends Component <AppPropsComponentype> {
                             <Route path='/newa' render={() => <News/>}/>
                             <Route path='/musik' render={() => <Music/>}/>
                             <Route path='/settings' render={() => <Settings/>}/>
+                            <Route path='/message' render={() => <Message/>}/>
                         </div>
                     </div>
                 </div>

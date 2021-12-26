@@ -1,3 +1,4 @@
+
 export type SendMessageCreatorType = ReturnType<typeof SendMessageAC>
 
 export type newPostTextType = string
@@ -10,24 +11,14 @@ export type DialogsType = {
 }
 
 export type MessagesType = {
-    id: number
+    id: string
     title: string
 }
 
 
 let initialState: initialStateType = {
-    messages: [
-        {id: 1, title: 'hi'},
-        {id: 2, title: 'How is yor it kamasutra?'},
-        {id: 3, title: 'YoO'},
-        {id: 4, title: 'Сool dude'}
-    ],
-    dialogs: [
-        {id: 1, name: 'Petr'},
-        {id: 2, name: 'Sasha'},
-        {id: 3, name: 'Oleg'},
-        {id: 4, name: 'Victor'}
-    ],
+    messages: [],
+    dialogs: [],
 
 }
 
@@ -42,7 +33,7 @@ const dialogsReducer = (state: initialStateType = initialState, action: SendMess
             let body = action.newMessageBody;
             return {
                 ...state,
-                messages: [...state.messages, {id: new Date().getTime(), title: body}],
+                messages: [...state.messages, {id: new Date().toLocaleTimeString(), title: body}],
                 dialogs: [...state.dialogs],
             };
 
@@ -58,7 +49,7 @@ export const SendMessageAC = (newMessageBody:string) => {
         type: 'SEND-MESSAGE',
         newMessageBody
 
-    } as const
+    }as const
 }
 
 
