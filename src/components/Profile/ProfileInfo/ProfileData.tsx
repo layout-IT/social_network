@@ -1,6 +1,10 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Contact} from "./Contact";
 import s from './ProfileData.module.scss'
+import {saveProfileTC} from "../../redux/profileData-reducer";
+import {useDispatch, useSelector} from "react-redux";
+import {AppStateType} from "../../redux/redux-store";
+import {getUserProfile} from "../../redux/profile-reducer";
 
 type  ProfileDataType = {
     profile: profileType
@@ -8,12 +12,23 @@ type  ProfileDataType = {
     goToEditMode: () => void
 }
 
-
 export const ProfileData = (props: ProfileDataType) => {
     let [openClose, setOpenClose] = useState(false)
+    const profile = useSelector<AppStateType,profileType>(state => state.profileData.profile)
+    const dispatch = useDispatch();
     const changeOC = () => {
         setOpenClose(!openClose)
     }
+    useEffect(() => {
+        // debugger
+        dispatch(saveProfileTC(profile));
+
+        // setTimeout( () => {
+        //     dispatch(getUserProfile(profile.userId))
+        // }, 2000)
+
+    }, [profile])
+
     return <div className={s.wrapper}>
         <div className={s.top}>
             <div className={s.fat}><span className={s.left}>Full name : </span><span

@@ -20,7 +20,7 @@ const ProfileInfo = (props: ProfileInfoType) => {
     }
 
     const goToEditMode = () => {
-        setEditMode(true)
+        setEditMode(!editMode)
     }
 
     return <div className={s.wrapper}>
@@ -28,7 +28,7 @@ const ProfileInfo = (props: ProfileInfoType) => {
             <div className={s.pictureContainer}><img
                 src={props.profile.photos.large ? props.profile.photos.large : userImg} alt="ptcture"/>
                 <div className={s.infoSide}><ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-                    {editMode ? <ProfileDataForm/> : <ProfileData profile={props.profile}
+                    {editMode ? <ProfileDataForm goToEditMode={goToEditMode} /> : <ProfileData profile={props.profile}
                                                                   isOwner={isOwner}
                                                                   goToEditMode={goToEditMode}/>
                     }

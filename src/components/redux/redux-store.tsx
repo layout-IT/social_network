@@ -9,6 +9,7 @@ import {reducer as formReducer} from 'redux-form';
 import appReducer from "./app-reducer";
 import { Store } from "redux";
 import { compose } from "redux";
+import {profileDataReducer} from "./profileData-reducer";
 
 export let reducer = combineReducers({
     profilePage: profileReducer,
@@ -18,6 +19,7 @@ export let reducer = combineReducers({
     auth: AuthReducer,
     form: formReducer,
     app: appReducer,
+    profileData: profileDataReducer,
 });
 export type AppStateType = ReturnType<typeof reducer>
 // @ts-ignore

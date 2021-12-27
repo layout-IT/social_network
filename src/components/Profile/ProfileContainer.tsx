@@ -31,8 +31,8 @@ function ProfileContainer(props: PropsType) {
     if (!userId) {
         props.history.push('/users')
     }
-    props.getUserProfile(userId)
-    props.getUserStatus(userId)
+    props.getUserProfile(userId);
+    props.getUserStatus(userId);
 
     return (
         <Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateUserStatus}/>
