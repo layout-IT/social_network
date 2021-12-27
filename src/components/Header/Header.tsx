@@ -13,6 +13,7 @@ const [openClose, setOpenClose] = useState(false)
 const OpenAdditionalMenu = () => {
     setOpenClose(!openClose)
 }
+
     return <header className={s.header}>
         <div className={s.imgH1Style}>
             <img
@@ -61,7 +62,7 @@ const OpenAdditionalMenu = () => {
         <div className={s.loginBlock}>
             {isAuth ? <img src="https://miro.medium.com/max/1200/1*AbGafkazjc_S1pZPh0B9cQ.png" alt="photo"/> :<img src="http://cdn.onlinewebfonts.com/svg/download_510068.png" alt="photo"/> }
 
-            <svg onClick={()=> OpenAdditionalMenu()} aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img"
+            <svg onClick={()=> OpenAdditionalMenu()}  aria-hidden="true" focusable="false" data-prefix="fas" data-icon="angle-down" role="img"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
                  className={openClose ? s.svgHoverUp: s.svgHoverDown}>
                 <path fill="currentColor"

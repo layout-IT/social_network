@@ -7,8 +7,8 @@ type contactTitleType ={
 }
 
 export const Contact = (props:contactTitleType) => {
-    return <div>
-        <div className={s.fat}>{props.contactTitle}</div>
-        <div className={s.fat}>{props.contactValue}</div>
+    return <div className={s.wraper}>
+        <div className={s.fatT}>{props.contactTitle}:</div>
+        <div className={s.fatV}>{props.contactValue}</div>
     </div>
 }

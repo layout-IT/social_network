@@ -1,11 +1,13 @@
 
-.item{
+.item {
     display: flex;
     color: green;
     align-items: center;
+    width: 100%;
+
 }
 
-.item img{
+.item img {
     max-width: 45px;
     max-height: 45px;
     width: 100%;
@@ -14,7 +16,17 @@
     border-radius: 50%;
     margin-right: 15px;
 }
-.wrapper{
- margin-bottom: 30px;
+
+.wrapper {
     padding: 20px 30px;
- }
+}
+
+.message {
+    width: 100%;
+    padding: 20px;
+    border-radius: 20px;
+    border: 5px solid #EDEEF0;
+    justify-content: space-between;
+    align-items: center;
+
+}

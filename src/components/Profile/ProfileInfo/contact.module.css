@@ -1,6 +1,17 @@
-.fat{
+.wraper{
+    display: flex;
+}
+.fatT{
     font-family: "Arial";
     font-weight: 600;
     font-size: 16px;
     margin: 5px;
+    color: #afacac;
+}
+.fatV{
+    font-family: "Arial";
+    font-weight: 600;
+    font-size: 16px;
+    margin: 5px;
+    color: #717070;
 }

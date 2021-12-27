@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import s from './Paginator.module.css'
+import s from './Paginator.module.scss'
 
 type  UsersPropsType = {
     onPageChenged: (pageNumber: number) => void,
@@ -24,7 +24,7 @@ export let Paginator = (props: UsersPropsType) => {
 
     return <div className={s.wrapper}>
         {
-            porionNumber > 1 ? <button onClick={() => setPortionNumber(porionNumber - 1)}>prev</button> : ''
+            porionNumber > 1 ? <button className={s.button} onClick={() => setPortionNumber(porionNumber - 1)}>prev</button> : ''
         }
         {pages.filter(p => p >= leftBorder && p <= rightBorder).map((p, i) => {
             return <li key={i} className={s.numbers}>
@@ -34,7 +34,7 @@ export let Paginator = (props: UsersPropsType) => {
         })}
         {
             numberOfBlocks > porionNumber ?
-                <button onClick={() => setPortionNumber(porionNumber + 1)}> next </button> : ''
+                <button className={s.button} onClick={() => setPortionNumber(porionNumber + 1)}> next </button> : ''
         }
     </div>
 

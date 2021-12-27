@@ -1,14 +1,15 @@
 import React from 'react';
-import s from './MyPosts.module.css'
+import s from './MyPosts.module.scss'
 import Post from "./Post/Post";
 import {PropsMType} from "./MyPostsContainer";
 import {reduxForm, Field, InjectedFormProps} from "redux-form";
 
 const AddNewPostForm: React.FC<InjectedFormProps> = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <Field name='newPostText' component='textarea'/>
-            <button>Add post</button>
+        <form onSubmit={props.handleSubmit} className={s.textareaContainer}>
+            <Field name='newPostText' component='textarea' className={s.textarea} placeholder={'add your message...'}/>
+
+            <button className={s.textAreaButton}>Add post</button>
         </form>
     )
 }
@@ -26,14 +27,16 @@ const MyPosts = React.memo((props: PropsMType) => {
 
     }
 
-    return <div>
-        <div>
-            My posts
-        </div>
-        <AddNewPostReduxForm onSubmit={onAddPost}/>
+    return <div className={s.wrapperCntainer}>
+        <h2 className={s.title}>Add you post</h2>
         <div className={s.posts}>
             {postsElement}
         </div>
+        <div className={s.myPost}>
+            <AddNewPostReduxForm onSubmit={onAddPost}/>
+        </div>
+
+
     </div>
 
 })

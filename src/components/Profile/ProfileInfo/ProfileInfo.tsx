@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import s from './ProfileInfo.module.css'
+import s from './ProfileInfo.module.scss'
 import {Preloader} from "../../common/preloader/preloader";
 import ProfileStatus from "./ProfileStatus";
 import userImg from "../../../assets/images/c3224969bcc3648eb22ca478989fcfbb--mr-robot-robots.jpg";
@@ -19,16 +19,24 @@ const ProfileInfo = (props: ProfileInfoType) => {
         return <Preloader/>
     }
 
-    const goToEditMode = () => {setEditMode(true)}
+    const goToEditMode = () => {
+        setEditMode(true)
+    }
 
-    return <div>
+    return <div className={s.wrapper}>
         <div className={s.picture}>
-            <img src={props.profile.photos.large ? props.profile.photos.large : userImg} alt="ptcture"/>
-            <ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
-            {editMode ? <ProfileDataForm/> : <ProfileData profile={props.profile}
-                                                          isOwner={isOwner}
-                                                          goToEditMode={goToEditMode}/>
-            }
+            <div className={s.pictureContainer}><img
+                src={props.profile.photos.large ? props.profile.photos.large : userImg} alt="ptcture"/>
+                <div className={s.infoSide}><ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
+                    {editMode ? <ProfileDataForm/> : <ProfileData profile={props.profile}
+                                                                  isOwner={isOwner}
+                                                                  goToEditMode={goToEditMode}/>
+                    }
+                </div>
+
+            </div>
+
+
         </div>
     </div>
 

@@ -11,7 +11,6 @@ function Message () {
     const messages = useSelector<AppStateType, MessagesType[]>(state => state.dialogsPage.messages)
     const dispatch = useDispatch()
     let [value, setValue] = useState('')
-    let [time, settime] = useState('')
 
     let valueChange = (e: ChangeEvent<HTMLInputElement>) => {
 
@@ -41,7 +40,7 @@ function Message () {
                 <div className={s.hours}></div>
             </div>
             <div className={s.text}> {messages.map(messages => <div>
-                <div className={s.mapText}>{messages.id + ' ' + messages.title}</div>
+                <div className={s.messageField}><span className={s.mapTime}>{messages.id}</span><span className={s.mapText}>{messages.title}</span></div>
             </div>)}</div>
         </div>
         <div className={s.footer}>

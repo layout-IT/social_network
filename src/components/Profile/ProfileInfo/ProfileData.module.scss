@@ -1,0 +1,53 @@
+.wrapper {
+  color: #aca7a7;
+  display: flex;
+  flex-direction: column;
+  button {
+
+  }
+}
+.top{
+  position: relative;
+  margin-bottom: 30px;
+}
+.refBut {
+  margin-bottom: 10px;
+  padding: 10px 20px;
+  background-color: #0D61BC;
+  color: white;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  box-shadow: 2px 2px 2px #3c76b4;
+  position: absolute;
+  bottom: -30px;
+  right: 25px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 5px 5px 5px #3c76b4;
+  }
+  &:active {
+    box-shadow: 2px 2px 2px #3c76b4;
+  }
+}
+
+.Contact {
+  cursor: pointer;
+}
+
+.right {
+  color: #1c1c1c;
+  flex: 0 1 60%;
+  flex-wrap: wrap;
+}
+
+.left {
+  flex: 0 1 40%;
+  flex-wrap: wrap;
+  color: #a0a0a0;
+}
+
+.fat {
+  position: relative;
+  display: flex;
+  padding: 5px;
+}

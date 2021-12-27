@@ -48,7 +48,8 @@
     border: 1px solid #1a66bb;
     flex: 0 1 88%;
   }
-  button{
+
+  button {
     padding: 5px 10px;
     background-color: #0D61BC;
     color: white;
@@ -57,9 +58,36 @@
   }
 }
 
+.messageField {
+  position: relative;
+  border-bottom: 1px solid #0D61BC;
+  padding: 40px 0 20px 0;
+
+}
+
 .mapText {
   color: #767474;
   padding: 5px;
+  font-size: 18px;
+  color: black;
+
+}
+
+.mapTime {
+  position: relative;
+  color: #aaa8a8;
+  padding: 5px;
+  font-size: 14px;
+  position: absolute;
+  top: 58px;
+  right: 36px;
+  &::after {
+    content: '✔';
+    position: absolute;
+    top: 2px;
+    right: -12px;
+  }
+
 }
 
 .text {
