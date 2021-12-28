@@ -14,6 +14,7 @@ import Settings from "./components/NotFound404/Settings";
 import Music from "./components/NotFound404/Music";
 import News from './components/NotFound404/News';
 import Message from "./components/Dialogs/Message/Message";
+import Profile from "./components/Profile/Profile";
 
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
@@ -53,6 +54,7 @@ class App extends Component <AppPropsComponentype> {
                             <Route path='/music' render={() => <Music/>}/>
                             <Route path='/settings' render={() => <Settings/>}/>
                             <Route path='/message' render={() => <Message/>}/>
+                            <Route path='/' render={()=> <Login/>}/>
                         </div>
                     </div>
                 </div>
