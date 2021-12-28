@@ -10,9 +10,9 @@ import {Route} from 'react-router-dom';
 import {AppStateType} from "./components/redux/redux-store";
 import {connect} from "react-redux";
 import {WithSuspense} from "./hoc/WithSuspense";
-import Settings from "./components/Settings/Settings";
-import Music from "./components/Music/Music";
-import News from './components/News/News';
+import Settings from "./components/NotFound404/Settings";
+import Music from "./components/NotFound404/Music";
+import News from './components/NotFound404/News';
 import Message from "./components/Dialogs/Message/Message";
 
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
@@ -29,6 +29,7 @@ type mapStateToPropsType = {
 type AppPropsComponentype = mapStateToPropsType & mapDispatchToPropsType
 
 class App extends Component <AppPropsComponentype> {
+
     componentDidMount() {
         this.props.initializeApp();
     }
@@ -48,8 +49,8 @@ class App extends Component <AppPropsComponentype> {
                             <Route path='/profile/:userId' render={WithSuspense(ProfileContainer)}/>
                             <Route path='/users' render={() => <UsersContainer/>}/>
                             <Route path='/login' render={() => <Login/>}/>
-                            <Route path='/newa' render={() => <News/>}/>
-                            <Route path='/musik' render={() => <Music/>}/>
+                            <Route path='/news' render={() => <News/>}/>
+                            <Route path='/music' render={() => <Music/>}/>
                             <Route path='/settings' render={() => <Settings/>}/>
                             <Route path='/message' render={() => <Message/>}/>
                         </div>

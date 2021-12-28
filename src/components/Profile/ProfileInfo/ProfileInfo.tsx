@@ -26,7 +26,7 @@ const ProfileInfo = (props: ProfileInfoType) => {
     return <div className={s.wrapper}>
         <div className={s.picture}>
             <div className={s.pictureContainer}><img
-                src={props.profile.photos.large ? props.profile.photos.large : userImg} alt="ptcture"/>
+                src={props.profile.photos.large ? props.profile.photos.large : userImg} alt="picture"/>
                 <div className={s.infoSide}><ProfileStatus status={props.status} updateStatus={props.updateStatus}/>
                     {editMode ? <ProfileDataForm goToEditMode={goToEditMode} /> : <ProfileData profile={props.profile}
                                                                   isOwner={isOwner}

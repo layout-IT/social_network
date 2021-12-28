@@ -4,6 +4,7 @@ import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
 import {AppStateType} from "../redux/redux-store";
 import {logIn} from "../redux/auth-reducer";
+import style from './Login.module.scss'
 
 type FormExportType = {
     email: string
@@ -13,18 +14,18 @@ type FormExportType = {
 
  export const LoginForm: React.FC<InjectedFormProps<FormExportType>> = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={props.handleSubmit} className={style.wrapper}>
             <div>
-                <Field name={'email'} placeholder={'email'} component={'input'}/>
+                <Field name={'email'} placeholder={'email'} component={'input'} className={style.input}/>
             </div>
-            <div>
-                <Field name={'password'} placeholder={'password'} component={'input'} type={'password'}/>
+            <div >
+                <Field name={'password'} placeholder={'password'} component={'input'} type={'password'} className={style.input}/>
             </div>
-            <div>
-                <Field type={'checkbox'} name={'rememberMe'} component={'input'}/>remember me
+            <div className={style.rememberMe}>
+                <Field type={'checkbox'} name={'rememberMe'} component={'input'} /> <span className={style.rememberMeText}>remember me</span>
             </div>
-            <div>
-                <button>Login</button>
+            <div >
+                <button className={style.button}>Login</button>
             </div>
         </form>
     )
@@ -39,7 +40,7 @@ export const LoginRedaxForm = reduxForm<FormExportType>({
         props.logIn(formData.email,formData.password,formData.rememberMe)
     }
     if (props.isAuth){
-       return <Redirect to={'/profile'} />
+       return <Redirect to={'/profile/18971'} />
     }
     return <div>
         <h1>Login</h1>

@@ -12,7 +12,6 @@ type  UsersPropsType = {
 
 export let Paginator = (props: UsersPropsType) => {
     let pageesCount = Math.ceil(props.totalUsersCount / props.pageSize)// общее число / сколько делать на странице
-    console.log('props.totalUsersCount : ' + props.totalUsersCount +  'props.pageSize : ' + props.pageSize)// общее количество Пользователей /
     let pages = []
     for (let i = 1; i <= pageesCount + 1; i++) {
         pages.push(i)

@@ -32,7 +32,6 @@ let initialState = {
 export const profileDataReducer = (state: initialStateType = initialState, action: actionType): initialStateType => {
     switch (action.type) {
         case "SAVE-PROFILE":
-            debugger
             return {...state, profile: {
                 ...state.profile, aboutMe: action.payload.aboutMe,
                     fullName: action.payload.fullName,lookingForAJob : action.payload.lookingForAJob,
@@ -62,7 +61,6 @@ export const saveProfileTC = (profile: any) => (dispatch: any, getState: any) =>
     //     lookingForAJobDescription : profile.profScills
     //
     // }
-    debugger
     return profileAPI.saveProfile(profile)
         .then(res => {
             dispatch(getUserProfile(state.userId))

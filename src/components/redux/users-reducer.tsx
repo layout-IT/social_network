@@ -45,7 +45,7 @@ export const unfollow = (userId: number) => {
 const initialState = {
     users: [],
     pageSize: 100,
-    totalUsersCount: 0,
+    totalUsersCount: 1,
     currentPage: 200,
     isFetching: false,
     followingInProgress: [],

@@ -22,10 +22,6 @@ export const ProfileDataForm = (props:propsType) => {
         props.goToEditMode()
     }
     useEffect(() => {
-        // debugger
-        // return () => {
-        //
-        // }
     }, [profile])
     console.log(profile)
     const changeFullName = (e: ChangeEvent<HTMLInputElement>) => {

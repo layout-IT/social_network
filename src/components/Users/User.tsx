@@ -1,5 +1,5 @@
 import React from 'react'
-import s from "./Users.module.css";
+import s from "./Users.module.scss";
 import userImg from "../../assets/images/c3224969bcc3648eb22ca478989fcfbb--mr-robot-robots.jpg";
 import {followingInProgressType, UsersType} from "../redux/users-reducer";
 import {NavLink} from 'react-router-dom';

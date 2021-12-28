@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
-import s from './ProfileStatus.module.css'
+import s from './ProfileStatus.module.scss'
 
 
 type ProfileStatusType = {
@@ -18,7 +18,6 @@ const ProfileStatus = (props: ProfileStatusType) => {
 
     const onStatusChange = (e: ChangeEvent<HTMLInputElement>) => {
         setState({...state, status: e.currentTarget.value})
-        console.log(state.status)
     }
     const activatedMode = () => {
         setState({...state, editMode: true})

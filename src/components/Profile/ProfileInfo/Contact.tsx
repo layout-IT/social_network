@@ -1,5 +1,5 @@
 import React from "react";
-import s from './contact.module.css'
+import s from './contact.module.scss'
 
 type contactTitleType ={
     contactTitle : string

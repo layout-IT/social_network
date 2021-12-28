@@ -1,5 +1,5 @@
 import React from 'react'
-import s from "./Users.module.css";
+import s from "./Users.module.scss";
 import {followingInProgressType, UsersType} from "../redux/users-reducer";
 import {Paginator} from "../common/Paginator/Paginator";
 import {User} from "./User";

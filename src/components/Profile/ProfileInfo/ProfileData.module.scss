@@ -28,22 +28,37 @@
   &:active {
     box-shadow: 2px 2px 2px #3c76b4;
   }
+  @media (max-width: 850px) {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
 }
 
 .Contact {
   cursor: pointer;
+  @media (max-width: 850px) {
+    font-size: 12px;
+  }
 }
 
 .right {
   color: #1c1c1c;
   flex: 0 1 60%;
   flex-wrap: wrap;
+  @media (max-width: 850px) {
+    font-size: 10px;
+  }
 }
 
 .left {
   flex: 0 1 40%;
   flex-wrap: wrap;
   color: #a0a0a0;
+  padding-right: 10px;
+  @media (max-width: 850px) {
+    font-size: 10px;
+  }
+
 }
 
 .fat {

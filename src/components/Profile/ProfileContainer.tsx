@@ -26,7 +26,6 @@ type OwnPropsType = mapStatePropsType & mapDispatchPropsType
 type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType
 
 function ProfileContainer(props: PropsType) {
-
     let userId = props.match.params.userId
     if (!userId) {
         props.history.push('/users')

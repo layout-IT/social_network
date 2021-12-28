@@ -42,7 +42,6 @@ export const profileAPI = {
         return instance.put(`profile/status`, {status: status})
     },
     saveProfile (profile: profileType) {
-        debugger
         return instance.put<profileType>(`profile`, profile)
     }
 

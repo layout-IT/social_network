@@ -20,7 +20,6 @@ export const ProfileData = (props: ProfileDataType) => {
         setOpenClose(!openClose)
     }
     useEffect(() => {
-        // debugger
         dispatch(saveProfileTC(profile));
 
         // setTimeout( () => {
