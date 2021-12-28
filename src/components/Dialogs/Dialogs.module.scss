@@ -7,6 +7,9 @@
 }
 .wrapperDialogs{
   display: flex;
+  @media (max-width: 850px) {
+    margin-right: 10px;
+  }
 }
 .dialogItem{
     display: flex;
@@ -43,6 +46,14 @@
     font-weight: 700;
     font-style: italic;
     margin-bottom: 10px;
-}
+  @media (max-width: 850px) {
+    font-size: 12px;
+  }
 
+}
+.date{
+  @media (max-width: 850px) {
+    font-size: 12px;
+  }
+}
 

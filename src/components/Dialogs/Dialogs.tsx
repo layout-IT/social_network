@@ -29,7 +29,7 @@ export function Dialogs (props: DialogsPropsType) {
                         <div className={s.messages}>Сool dude</div>
                     </div>
                 </div>
-                <div>10 Dec</div>
+                <div className={s.date}>10 Dec</div>
             </NavLink>
             <NavLink to={'/message'} className={s.dialogItem}>
                 <div className={s.wrapperDialogs}>
@@ -40,7 +40,7 @@ export function Dialogs (props: DialogsPropsType) {
                         <div className={s.messages}>Hello. How are you?</div>
                     </div>
                 </div>
-                <div>24 Nov</div>
+                <div className={s.date}>24 Nov</div>
             </NavLink>
         </div>
     </div>
