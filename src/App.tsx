@@ -3,7 +3,6 @@ import './App.scss';
 import Nav from "./components/Nav/Nav";
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderComtainer";
-import Login from "./components/Login/Login";
 import {initializeApp} from "./components/redux/app-reducer";
 import {Preloader} from "./components/common/preloader/preloader";
 import {Route} from 'react-router-dom';
@@ -14,7 +13,7 @@ import Settings from "./components/NotFound404/Settings";
 import Music from "./components/NotFound404/Music";
 import News from './components/NotFound404/News';
 import Message from "./components/Dialogs/Message/Message";
-import Profile from "./components/Profile/Profile";
+import Login from './components/Login/Login';
 
 const DialogsContainer = React.lazy(() => import ("./components/Dialogs/DialogsContainer"))
 const ProfileContainer = React.lazy(() => import ("./components/Profile/ProfileContainer"))
@@ -31,11 +30,11 @@ type AppPropsComponentype = mapStateToPropsType & mapDispatchToPropsType
 
 class App extends Component <AppPropsComponentype> {
 
-    componentDidMount() {
+    componentDidMount () {
         this.props.initializeApp();
     }
 
-    render() {
+    render () {
         if (!this.props.initialized) {
             return <Preloader/>
         }
@@ -46,7 +45,7 @@ class App extends Component <AppPropsComponentype> {
                     <div className='appWrapperContainer'>
                         <Nav/>
                         <div className='app-wrapper-contant'>
-                            <Route path='/dialogs' render = {WithSuspense(DialogsContainer)}/>
+                            <Route path='/dialogs' render={WithSuspense(DialogsContainer)}/>
                             <Route path='/profile/:userId' render={WithSuspense(ProfileContainer)}/>
                             <Route path='/users' render={() => <UsersContainer/>}/>
                             <Route path='/login' render={() => <Login/>}/>
@@ -54,7 +53,7 @@ class App extends Component <AppPropsComponentype> {
                             <Route path='/music' render={() => <Music/>}/>
                             <Route path='/settings' render={() => <Settings/>}/>
                             <Route path='/message' render={() => <Message/>}/>
-                            <Route path='/' render={()=> <Login/>}/>
+                            <Route path='/' render={() => <Login/>}/>
                         </div>
                     </div>
                 </div>

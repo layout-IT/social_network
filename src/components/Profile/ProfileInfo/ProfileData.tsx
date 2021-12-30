@@ -4,7 +4,6 @@ import s from './ProfileData.module.scss'
 import {saveProfileTC} from "../../redux/profileData-reducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {getUserProfile} from "../../redux/profile-reducer";
 
 type  ProfileDataType = {
     profile: profileType
@@ -14,7 +13,7 @@ type  ProfileDataType = {
 
 export const ProfileData = (props: ProfileDataType) => {
     let [openClose, setOpenClose] = useState(false)
-    const profile = useSelector<AppStateType,profileType>(state => state.profileData.profile)
+    const profile = useSelector<AppStateType, profileType>(state => state.profileData.profile)
     const dispatch = useDispatch();
     const changeOC = () => {
         setOpenClose(!openClose)
