@@ -1,10 +1,10 @@
 import React from 'react';
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {connect} from "react-redux";
-import {Redirect} from "react-router-dom";
 import {AppStateType} from "../redux/redux-store";
 import {logIn} from "../redux/auth-reducer";
 import style from './Login.module.scss'
+import {Redirect} from "react-router-dom";
 
 type FormExportType = {
     email: string
@@ -47,6 +47,7 @@ const Login = (props: any) => {
     if (props.isAuth) {
         return <Redirect to={'/profile/18971'}/>
     }
+
     return <div>
         <h1>Login</h1>
         <LoginRedaxForm onSubmit={onSubmit}/>
