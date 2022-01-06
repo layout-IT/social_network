@@ -24,7 +24,7 @@ function Message () {
 
     return <div className={s.wrapper}>
         <div className={s.header}>
-            <NavLink to={'/Dialogs'} className={s.back}>
+            <NavLink to={'/dialogs'} className={s.back}>
                 <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-left" role="img"
                      xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"
                      className="svg-inline--fa fa-chevron-left fa-w-10 fa-2x">
@@ -40,7 +40,8 @@ function Message () {
                 <div className={s.hours}></div>
             </div>
             <div className={s.text}> {messages.map(messages => <div>
-                <div className={s.messageField}><span className={s.mapTime}>{messages.id}</span><span className={s.mapText}>{messages.title}</span></div>
+                <div className={s.messageField}><span className={s.mapTime}>{messages.id}</span><span
+                    className={s.mapText}>{messages.title}</span></div>
             </div>)}</div>
         </div>
         <div className={s.footer}>

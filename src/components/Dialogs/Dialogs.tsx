@@ -24,7 +24,7 @@ export function Dialogs (props: DialogsPropsType) {
                 <div className={s.wrapperDialogs}>
                     <img src="https://www.abidincaodds.com/wp-content/uploads/2020/04/routine.png" alt="photo"/>
 
-                    <div className={s.dialogPS} >
+                    <div className={s.dialogPS}>
                         <div className={s.dialogs__items}>Petr</div>
                         <div className={s.messages}>Сool dude</div>
                     </div>
@@ -35,7 +35,7 @@ export function Dialogs (props: DialogsPropsType) {
                 <div className={s.wrapperDialogs}>
                     <img src="https://cont.ws/uploads/pic/2019/12/%D1%83%20%2820%29.png" alt="photo"/>
 
-                    <div className={s.dialogPS} >
+                    <div className={s.dialogPS}>
                         <div className={s.dialogs__items}>Lisa</div>
                         <div className={s.messages}>Hello. How are you?</div>
                     </div>

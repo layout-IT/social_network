@@ -23,11 +23,13 @@ export let Paginator = (props: UsersPropsType) => {
 
     return <div className={s.wrapper}>
         {
-            porionNumber > 1 ? <button className={s.button} onClick={() => setPortionNumber(porionNumber - 1)}>prev</button> : ''
+            porionNumber > 1 ?
+                <button className={s.button} onClick={() => setPortionNumber(porionNumber - 1)}>prev</button> : ''
         }
         {pages.filter(p => p >= leftBorder && p <= rightBorder).map((p, i) => {
             return <li key={i} className={s.numbers}>
-                <span className={props.currentPage === p ? s.active : ''} onClick={() => props.onPageChenged(p)}>{p}</span>
+                <span className={props.currentPage === p ? s.active : ''}
+                      onClick={() => props.onPageChenged(p)}>{p}</span>
             </li>
 
         })}

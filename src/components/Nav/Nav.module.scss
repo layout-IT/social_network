@@ -89,7 +89,7 @@ h6 {
   font-weight: inherit;
   font-size: inherit;
   font-size: 25px;
-  font-family:Algerian ;
+  font-family: Algerian;
   color: #0D61BC;
   text-align: center;
   margin-bottom: 20px;
@@ -103,23 +103,19 @@ h6 {
   height: 100%;
 }
 
-
-a.active {
-  color: black;
-  font-weight: 600;
-}
-
 .item {
   margin-bottom: 10px;
   cursor: pointer;
   display: flex;
   justify-content: start;
   align-items: center;
-  transition: all 0.3s ease ;
+  transition: all 0.3s ease;
   padding: 5px;
-&:hover {
-  background-color: rgba(229, 226, 226, 0.76);
-}
+
+  &:hover {
+    background-color: rgba(229, 226, 226, 0.76);
+  }
+
   svg {
     width: 20px;
 
@@ -135,6 +131,12 @@ a.active {
 }
 
 .nameStyle {
-  color: rgba(0, 0, 0, 0.71);
+  color: rgba(13, 97, 188, 0.75);
   margin-left: 10px;
+  font-size: 20px;
+  font-weight: 400;
+}
+.active {
+  color: #000000;
+  font-weight: 900;
 }

@@ -77,7 +77,7 @@ const OpenAdditionalMenu = () => {
                         <div >{props.login}</div>
                         <button onClick={props.logOut}>logOut</button>
                     </div>
-                    : <NavLink className={s.login} to={'/login'}>login</NavLink>}</div> ) : (openClose && <div className={s.AreNotLoggedIn}>You are not logged in</div>)
+                    : <NavLink className={s.login} to={'/profile'}>login</NavLink>}</div> ) : (openClose && <div className={s.AreNotLoggedIn}>You are not logged in</div>)
         }
 
     </header>
