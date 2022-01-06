@@ -66,7 +66,6 @@ export const logOut = () => async (dispatch: any) => {
     if (response.data.resultCode === 0) {
         dispatch(SetAuthUserData(0, '0', '0', false))
     }
-    ;
 }
 
 export default AuthReducer;

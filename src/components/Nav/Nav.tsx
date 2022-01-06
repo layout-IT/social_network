@@ -17,7 +17,7 @@ const Nav = () => {
             </svg>
 
             {/*{!isauth ? <NavLink className={s.nameStyle} to='/profile/' activeClassName={s.active}>Profile</NavLink> :  <NavLink className={s.nameStyle} to='/profile/18971' activeClassName={s.active}>Profile</NavLink>}*/}
-            <NavLink className={s.nameStyle} to={!isauth ? '/login' : '/profile/18971'} activeClassName={!isauth ? '' : s.active}>Profile</NavLink>
+            <NavLink className={s.nameStyle} to={!isauth ? '/' : '/profile/18971'} activeClassName={!isauth ? '' : s.active}>Profile</NavLink>
 
         </div>
         <div className={`${s.item} ${s.active}`}>
@@ -29,7 +29,7 @@ const Nav = () => {
                       className=""></path>
             </svg>
             {/*{!isauth ? <NavLink className={s.nameStyle} to='/profile' activeClassName={s.active}>Messages</NavLink> : <NavLink className={s.nameStyle} to='/Dialogs' activeClassName={s.active}>Messages</NavLink>}*/}
-          <NavLink className={s.nameStyle} to={!isauth ? '/login' : '/message'} activeClassName={!isauth ? '' : s.active}>Messages</NavLink>
+          <NavLink className={s.nameStyle} to={!isauth ? '/' : '/message'} activeClassName={!isauth ? '' : s.active}>Messages</NavLink>
 
         </div>
         <div className={`${s.item} ${s.active}`}>
@@ -52,7 +52,7 @@ const Nav = () => {
                       className=""></path>
             </svg>
             {/*{!isauth ?  <NavLink className={s.nameStyle} to='/Profile' activeClassName={s.active}>News</NavLink>: <NavLink className={s.nameStyle} to='/News' activeClassName={s.active}>News</NavLink> }*/}
-           <NavLink className={s.nameStyle} to={!isauth ? '/login' : '/news'} activeClassName={!isauth ? '' : s.active}>News</NavLink>
+           <NavLink className={s.nameStyle} to={!isauth ? '/' : '/news'} activeClassName={!isauth ? '' : s.active}>News</NavLink>
 
         </div>
         <div className={`${s.item} ${s.active}`}>
@@ -64,7 +64,7 @@ const Nav = () => {
                       className=""></path>
             </svg>
             {/*{!isauth ?  <NavLink className={s.nameStyle} to='/profile' activeClassName={s.active}>Music</NavLink>: <NavLink className={s.nameStyle} to='/music' activeClassName={s.active}>Music</NavLink>}*/}
-           <NavLink className={s.nameStyle} to={!isauth ? '/login' : '/music'}  activeClassName={!isauth ? '' : s.active}>Music</NavLink>
+           <NavLink className={s.nameStyle} to={!isauth ? '/' : '/music'}  activeClassName={!isauth ? '' : s.active}>Music</NavLink>
 
         </div>
         <div className={`${s.item} ${s.active}`}>
@@ -76,7 +76,7 @@ const Nav = () => {
                       className=""></path>
             </svg>
             {/*{!isauth ?  <NavLink className={s.nameStyle} to='/profile' activeClassName={s.active}>Settings</NavLink>:  <NavLink className={s.nameStyle} to='/settings' activeClassName={s.authActive}>Settings</NavLink>}*/}
-            <NavLink className={s.nameStyle} to={!isauth ? '/login' : '/settings'} activeClassName={!isauth ? '' : s.active}>Settings</NavLink>
+            <NavLink className={s.nameStyle} to={!isauth ? '/' : '/settings'} activeClassName={!isauth ? '' : s.active}>Settings</NavLink>
         </div>
     </nav>
 }

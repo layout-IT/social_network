@@ -14,8 +14,8 @@ type FormExportType = {
 
 export const LoginForm: React.FC<InjectedFormProps<FormExportType>> = (props) => {
     return (<div className={style.common}>
-            <div>Email: farsi-avanti@yandex.ru</div>
-            <div>Password: 12345678</div>
+            <div>Email:farsi-avanti@yandex.ru</div>
+            <div>Password:12345678</div>
             <form onSubmit={props.handleSubmit} className={style.wrapper}>
                 <div>
                     <Field name={'email'} placeholder={'email'} component={'input'} className={style.input}/>
